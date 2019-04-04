@@ -1,0 +1,62 @@
+# Simple pizza order program
+# Stores a unique order in a dictionary with the key being the 
+# customer's name and the value being a list of toppings.
+
+availibleToppings = {"mushrooms", "pepperoni", "onions", "olives", "peppers", "extra cheese"}
+numToppings = 0
+orders = {}
+
+# This block records a single order.
+
+while True:
+  # Option to print pending orders
+  if len(orders) > 0:
+    print("To print all orders enter 'orders'.")
+    printOrders = input("To take a new order enter 'order': ")
+    if printOrders == 'orders':
+      print("\n")
+      [print(k,"toppings are:\n", "\t",x) for k,x in orders.items()]
+    print("\n")
+  # Start generating a new order key. Checks against current keys
+  newCustomer = input("Please enter a name for your order: ")
+  while newCustomer.lower() in orders.keys():
+    newCustomer = input("We're serving someone by that name, Enter another: ")
+  
+  # Captures a list of toppings to correlate to the new orders key.
+  print("\nOur availible toppings are:")
+  [print("\t",x.title()) for x in availibleToppings]
+  print("\n")
+  
+  toppings = []
+  while True:
+    message = "Enter a topping for your pizza. Enter 'save' to save your order: "
+    nextTopping = input(message).lower()
+
+    if nextTopping.lower() != 'save':
+      # checks against availible toppings
+      while nextTopping.lower() not in availibleToppings:
+        nextTopping = input("topping not availible. Enter another or save: ")
+        if nextTopping.lower() == 'save':
+          continue;
+      # Stores disered topping in the list of toppings.
+      toppings.append(nextTopping)
+
+    else:
+      # If the user doesn't want toppings it modifies the list to indicate a cheese pizza
+      if len(toppings) == 0:
+        toppings.append('plain cheese')
+
+      # Print the customer's topping choices before saving.
+      print("\nToppings for", newCustomer,"are: ")
+      [print("\t",x.title()) for x in toppings]
+
+      # Allow them to make changes
+      save = input("Enter 'save' to save this order or 'discard' to start again: ")
+      print("\n")
+      if save == 'save':
+        orders[newCustomer.lower()] = toppings
+        print("We're making your order\n")
+        break;
+      else:
+        toppings.clear()
+        continue
