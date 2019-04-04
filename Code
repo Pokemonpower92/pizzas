@@ -5,8 +5,6 @@
 availibleToppings = {"mushrooms", "pepperoni", "onions", "olives", "peppers", "extra cheese"}
 orders = {}
 
-# This block records a single order.
-
 while True:
   # Option to print pending orders
   if len(orders) > 0:
