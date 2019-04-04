@@ -26,7 +26,8 @@ while True:
   
   toppings = []
   while True:
-    message = "Enter a topping for your pizza. Enter 'save' to save your order: "
+    print("Enter a topping for your pizza.\nFor a plain cheese pizza, save without choosing any toppings.")
+    message = "Enter 'save' to save your order: "
     nextTopping = input(message).lower()
 
     if nextTopping.lower() != 'save':
@@ -35,7 +36,7 @@ while True:
         nextTopping = input("topping not availible. Enter another or save: ")
         if nextTopping.lower() == 'save':
           continue;
-      # Stores disered topping in the list of toppings.
+      # Stores desired topping in the list of toppings.
       toppings.append(nextTopping)
 
     else:
