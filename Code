@@ -3,7 +3,6 @@
 # customer's name and the value being a list of toppings.
 
 availibleToppings = {"mushrooms", "pepperoni", "onions", "olives", "peppers", "extra cheese"}
-numToppings = 0
 orders = {}
 
 # This block records a single order.
